@@ -1,0 +1,27 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IFixDevice } from "../../models/device";
+
+interface IDeviceState {
+    isMobile: boolean | null;
+    isTablet: boolean | null;
+    isDesktop: boolean | null;
+}
+
+const initialState:IDeviceState = {
+    isMobile: false,
+    isDesktop: false,
+    isTablet: false
+}
+
+export const gadgetSlice = createSlice({
+    initialState,
+    name: 'gadgetSlice',
+    reducers: {
+        setGadget: (state, action:PayloadAction<IFixDevice>) => {
+            state.isMobile = action.payload.ifMobile;
+            state.isTablet = action.payload.ifTablet;
+            state.isDesktop = action.payload.ifDesktop;
+        }
+    }
+});
+export default gadgetSlice.reducer;

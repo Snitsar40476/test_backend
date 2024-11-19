@@ -1,0 +1,28 @@
+<?php
+// HTTP
+define('HTTP_SERVER', 'https://seed.ua/');
+
+// HTTPS
+define('HTTPS_SERVER', 'https://seed.ua/');
+
+// DIR
+define('DIR_APPLICATION', '/home/seed/web/seed.ua/public_html/catalog/');
+define('DIR_SYSTEM', '/home/seed/web/seed.ua/public_html/system/');
+define('DIR_IMAGE', '/home/seed/web/seed.ua/public_html/image/');
+define('DIR_LANGUAGE', '/home/seed/web/seed.ua/public_html/catalog/language/');
+define('DIR_TEMPLATE', '/home/seed/web/seed.ua/public_html/catalog/view/theme/');
+define('DIR_CONFIG', '/home/seed/web/seed.ua/public_html/system/config/');
+define('DIR_CACHE', '/home/seed/web/seed.ua/public_html/system/storage/cache/');
+define('DIR_DOWNLOAD', '/home/seed/web/seed.ua/public_html/system/storage/download/');
+define('DIR_LOGS', '/home/seed/web/seed.ua/public_html/system/storage/logs/');
+define('DIR_MODIFICATION', '/home/seed/web/seed.ua/public_html/system/storage/modification/');
+define('DIR_UPLOAD', '/home/seed/web/seed.ua/public_html/system/storage/upload/');
+
+// DB
+define('DB_DRIVER', 'mysqli');
+define('DB_HOSTNAME', 'arthuss.mysql.tools');
+define('DB_USERNAME', 'arthuss_db');
+define('DB_PASSWORD', 'avNQcAdV');
+define('DB_DATABASE', 'arthuss_db');
+define('DB_PORT', '3306');
+define('DB_PREFIX', 'oc_');

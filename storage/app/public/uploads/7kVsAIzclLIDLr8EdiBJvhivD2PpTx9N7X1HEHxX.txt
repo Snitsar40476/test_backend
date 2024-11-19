@@ -1,0 +1,25 @@
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from './reducers/userSlice';
+import gadgetReducer from './reducers/gadgetSlice';
+import chatsRoomReducer from './reducers/chatsRoomSlice';
+import messagesReducer from './reducers/messagesSlice';
+import { authApi } from "../api/authApi";
+import { userApi } from "../api/userApi";
+import { chatsRoomsApi } from "../api/chatsApi";
+
+export const store = configureStore({
+    reducer: {
+        [authApi.reducerPath]: authApi.reducer,
+        [userApi.reducerPath]: userApi.reducer,
+        [chatsRoomsApi.reducerPath]: chatsRoomsApi.reducer,
+        userState: userReducer,
+        gadgetState: gadgetReducer,
+        chatsRoomState: chatsRoomReducer,
+        messagesState: messagesReducer
+    },
+    devTools: process.env.REACT_APP_NODE_ENV === 'development',
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware, chatsRoomsApi.middleware])
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
