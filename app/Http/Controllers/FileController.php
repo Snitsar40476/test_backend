@@ -69,9 +69,9 @@ class FileController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function getFilesSortingNameAsc(Request $request): JsonResponse
+    public function getFilesSortingDate(Request $request): JsonResponse
     {
-        $result = $this->fileService->getFilesSortingNameAsc($request);
+        $result = $this->fileService->getFilesSortingName($request);
 
         return response()->json($result);
     }
@@ -80,31 +80,9 @@ class FileController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function getFilesSortingNameDesc(Request $request): JsonResponse
+    public function getFilesSortingName(Request $request): JsonResponse
     {
-        $result = $this->fileService->getFilesSortingNameDesc($request);
-
-        return response()->json($result);
-    }
-
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function getFilesSortingDateAsc(Request $request): JsonResponse
-    {
-        $result = $this->fileService->getFilesSortingDateAsc($request);
-
-        return response()->json($result);
-    }
-
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function getFilesSortingDateDesc(Request $request): JsonResponse
-    {
-        $result = $this->fileService->getFilesSortingDateDesc($request);
+        $result = $this->fileService->getFilesSortingDate($request);
 
         return response()->json($result);
     }
@@ -125,12 +103,12 @@ class FileController extends Controller
         return response()->json($result);
     }
 
-  
+
     public function downloadFile(Request $request)
     {
         $path = $request->get('path');
         $file = storage_path("app/public/{$path}");
-		
+
 		return $path;
     }
 

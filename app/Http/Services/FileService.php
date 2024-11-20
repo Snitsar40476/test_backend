@@ -39,36 +39,28 @@ class FileService
         return ['success' => 'File name has been modified'];
     }
 
-    public function getFilesSortingNameAsc(Request $request)
+    public function getFilesSortingName(Request $request)
     {
         $perPage = $request->input('per_page', 12);
-        $sortOrder = $request->input('order', 'asc');
+        $sortOrder = $request->get('order');
 
-        return File::orderBy('name', $sortOrder)->paginate($perPage);
+        if ($sortOrder === 'asc' || $sortOrder === 'desc') {
+            return File::orderBy('name', $sortOrder)->paginate($perPage);
+        }
+
+        return ['error' => 'Invalid Sort Order'];
     }
 
-    public function getFilesSortingNameDesc(Request $request)
+    public function getFilesSortingDate(Request $request)
     {
         $perPage = $request->input('per_page', 12);
-        $sortOrder = $request->input('order', 'desc');
+        $sortOrder = $request->get('order');
 
-        return File::orderBy('name', $sortOrder)->paginate($perPage);
-    }
+        if ($sortOrder === 'asc' || $sortOrder === 'desc') {
+            return File::orderBy('created_at', $sortOrder)->paginate($perPage);
+        }
 
-    public function getFilesSortingDateAsc(Request $request)
-    {
-        $perPage = $request->input('per_page', 12);
-        $sortOrder = $request->input('order', 'asc');
-
-        return File::orderBy('created_at', $sortOrder)->paginate($perPage);
-    }
-
-    public function getFilesSortingDateDesc(Request $request)
-    {
-        $perPage = $request->input('per_page', 12);
-        $sortOrder = $request->input('order', 'desc');
-
-        return File::orderBy('created_at', $sortOrder)->paginate($perPage);
+        return ['error' => 'Invalid Sort Order'];
     }
 
     public function deleteFile(string $file_key): array
